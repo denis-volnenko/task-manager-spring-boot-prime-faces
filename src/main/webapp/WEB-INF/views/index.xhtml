@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:menu = "http://java.sun.com/jsf/composite/menu"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+
+<h:body>
+	<menu:MainMenu />
+
+	<p:fieldset legend="ENDPOINTS">
+		<p:outputPanel>
+			<p:outputPanel>
+				<p:outputLabel value="ACTUATOR HEALTH" />
+			</p:outputPanel>
+			<p:outputPanel>
+				<p:link href="/actuator/health" target="_blank">
+					<p:outputLabel value="/actuator/health" />
+				</p:link>
+			</p:outputPanel>
+		</p:outputPanel>
+		<p:spacer height="10" />
+		<p:outputPanel>
+			<p:outputPanel>
+				<p:outputLabel value="SWAGGER API" />
+			</p:outputPanel>
+			<p:outputPanel>
+				<p:link href="/v2/api-docs" target="_blank">
+					<p:outputLabel value="/v2/api-docs" />
+				</p:link>
+			</p:outputPanel>
+		</p:outputPanel>
+		<p:spacer height="10" />
+		<p:outputPanel>
+			<p:outputPanel>
+				<p:outputLabel value="SWAGGER WEBUI" />
+			</p:outputPanel>
+			<p:outputPanel>
+				<p:link href="/swagger-ui.html#/" target="_blank">
+					<p:outputLabel value="/swagger-ui.html#/" />
+				</p:link>
+			</p:outputPanel>
+		</p:outputPanel>
+		<p:spacer height="10" />
+		<p:outputPanel>
+			<p:outputPanel>
+				<p:outputLabel value="REST PROJECTS PING" />
+			</p:outputPanel>
+			<p:outputPanel>
+				<p:link href="/api/projects/ping" target="_blank">
+					<p:outputLabel value="/api/tasks/ping" />
+				</p:link>
+			</p:outputPanel>
+		</p:outputPanel>
+		<p:spacer height="10" />
+		<p:outputPanel>
+			<p:outputPanel>
+				<p:outputLabel value="REST TASKS PING" />
+			</p:outputPanel>
+			<p:outputPanel>
+				<p:link href="/api/tasks/ping" target="_blank">
+					<p:outputLabel value="/api/tasks/ping" />
+				</p:link>
+			</p:outputPanel>
+		</p:outputPanel>
+		<p:spacer height="10" />
+		<p:outputPanel>
+			<p:outputPanel>
+				<p:outputLabel value="SOAP PROJECTS" />
+			</p:outputPanel>
+			<p:outputPanel>
+				<p:link href="/services/ProjectEndpoint?wsdl" target="_blank">
+					<p:outputLabel value="/services/ProjectEndpoint?wsdl" />
+				</p:link>
+			</p:outputPanel>
+		</p:outputPanel>
+		<p:spacer height="10" />
+		<p:outputPanel>
+			<p:outputPanel>
+				<p:outputLabel value="SOAP TASKS" />
+			</p:outputPanel>
+			<p:outputPanel>
+				<p:link href="/services/TaskEndpoint?wsdl" target="_blank">
+					<p:outputLabel value="/services/TaskEndpoint?wsdl" />
+				</p:link>
+			</p:outputPanel>
+		</p:outputPanel>
+	</p:fieldset>
+
+	<p:spacer height="10" />
+
+	<p:fieldset legend="ABOUT">
+		<p:outputPanel style="margin-bottom: 10px;">
+			<p:outputLabel value="WEB-SITE:" />
+			<p:spacer width="10" />
+			<p:link href="http://www.volnenko.ru" target="_blank">
+				<p:outputLabel value="http://www.volnenko.ru" />
+			</p:link>
+		</p:outputPanel>
+		<p:outputPanel>
+			<p:outputLabel value="WEB-SITE:" />
+			<p:spacer width="10" />
+			<p:link href="http://www.volnenko.school" target="_blank">
+				<p:outputLabel value="http://www.volnenko.school" />
+			</p:link>
+		</p:outputPanel>
+	</p:fieldset>
+
+	<p:spacer height="10" />
+	<menu:About />
+
+</h:body>
+</html>

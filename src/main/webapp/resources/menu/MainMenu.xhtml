@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:composite = "http://java.sun.com/jsf/composite"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <composite:interface>
+    </composite:interface>
+
+    <composite:implementation>
+        <p:outputPanel style="margin-bottom: 10px; background-color: black;">
+            <table width="100%" cellpadding="10" cellspacing="0" border="0">
+                <tr>
+                    <td width="100%">
+                        <h:link outcome="index" style="text-decoration: none; cursor: pointer;">
+                            <p:outputLabel value="TASK MANAGER" style="font-size: 1.5em; color: white;  cursor: pointer;" />
+                        </h:link>
+                    </td>
+                    <td width="300" nowrap="nowrap" align="right">
+                        <p:button value="PROJECTS" outcome="project-list">
+                        </p:button>
+                        <p:spacer width="10" />
+                        <p:button value="TASKS" outcome="task-list">
+                        </p:button>
+                    </td>
+                </tr>
+            </table>
+
+        </p:outputPanel>
+    </composite:implementation>
+</html>

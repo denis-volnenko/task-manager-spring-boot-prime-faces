@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+		xmlns="http://java.sun.com/xml/ns/javaee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+		version="2.1">
+
+	<application>
+		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver
+		</el-resolver>
+	</application>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>index</from-outcome>
+			<to-view-id>/WEB-INF/views/index.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>project-list</from-outcome>
+			<to-view-id>/WEB-INF/views/project-list.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>project-edit</from-outcome>
+			<to-view-id>/WEB-INF/views/project-edit.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>task-list</from-outcome>
+			<to-view-id>/WEB-INF/views/task-list.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>task-edit</from-outcome>
+			<to-view-id>/WEB-INF/views/task-edit.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:menu = "http://java.sun.com/jsf/composite/menu"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:metadata>
+    <f:viewParam name="id" value="#{taskEditController.id}" />
+    <f:viewAction action="#{taskEditController.init()}" />
+</f:metadata>
+<h:head>
+</h:head>
+<h:body>
+
+    <menu:MainMenu />
+
+    <h:form id="mainForm">
+
+        <p:fieldset legend="TASK EDIT">
+
+            <p:outputPanel>
+                <p:outputPanel style="margin-bottom: 5px;">
+                    <p:outputLabel value="PROJECT" />
+                </p:outputPanel>
+                <p:outputPanel styleClass="ui-fluid">
+                    <p:selectOneMenu value="#{taskEditController.task.projectId}" styleClass="ui-fluid">
+                        <f:selectItems var="item" value="#{taskEditController.projects}"
+                                       itemLabel="#{item.name}" itemValue="#{item.id}" />
+                    </p:selectOneMenu>
+                </p:outputPanel>
+            </p:outputPanel>
+
+            <p:spacer height="10" />
+
+            <p:outputPanel>
+                <p:outputPanel style="margin-bottom: 5px;">
+                    <p:outputLabel value="NAME" />
+                </p:outputPanel>
+                <p:outputPanel styleClass="ui-fluid">
+                    <p:inputText value="#{taskEditController.task.name}"
+                                 styleClass="ui-fluid" />
+                </p:outputPanel>
+            </p:outputPanel>
+
+            <p:spacer height="10" />
+
+            <p:outputPanel>
+                <p:outputPanel style="margin-bottom: 5px;">
+                    <p:outputLabel value="DESCRIPTION" />
+                </p:outputPanel>
+                <p:outputPanel styleClass="ui-fluid">
+                    <p:inputTextarea value="#{taskEditController.task.description}"
+                                     styleClass="ui-fluid" style="height: 100px;" />
+                </p:outputPanel>
+            </p:outputPanel>
+
+            <p:spacer height="5" />
+
+            <p:outputPanel>
+                <p:outputPanel style="margin-bottom: 5px;">
+                    <p:outputLabel value="DATE START" />
+                </p:outputPanel>
+                <p:outputPanel styleClass="ui-fluid">
+                    <p:datePicker value="#{taskEditController.task.dateStart}"
+                                  pattern="dd.MM.yyyy"
+                                  styleClass="ui-fluid" />
+                </p:outputPanel>
+            </p:outputPanel>
+
+            <p:spacer height="5" />
+
+            <p:outputPanel>
+                <p:outputPanel style="margin-bottom: 5px;">
+                    <p:outputLabel value="DATE FINISH" />
+                </p:outputPanel>
+                <p:outputPanel styleClass="ui-fluid">
+                    <p:datePicker value="#{taskEditController.task.dateFinish}"
+                                  pattern="dd.MM.yyyy"
+                                  styleClass="ui-fluid" />
+                </p:outputPanel>
+            </p:outputPanel>
+
+            <p:spacer height="5" />
+
+            <p:outputPanel>
+                <p:outputPanel style="margin-bottom: 5px;">
+                    <p:outputLabel value="STATUS" />
+                </p:outputPanel>
+                <p:outputPanel styleClass="ui-fluid">
+                    <p:selectOneMenu value="#{taskEditController.task.status}">
+                        <f:selectItems var="status" itemLabel="#{status.displayName}" itemValue="#{status}"
+                                       value="#{taskEditController.statuses}"  />
+                    </p:selectOneMenu>
+                </p:outputPanel>
+            </p:outputPanel>
+
+            <p:spacer height="5" />
+
+            <p:outputPanel>
+                <p:commandButton value="SAVE" action="#{taskEditController.save()}" />
+                <p:spacer width="10" />
+                <p:button value="CANCEL" outcome="task-list" />
+            </p:outputPanel>
+
+        </p:fieldset>
+
+    </h:form>
+
+</h:body>
+</html>
