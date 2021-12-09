@@ -7,4 +7,4 @@ WORKDIR /opt/task-manager
 RUN mvn clean package
 
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "./target/task-manager.jar"]
+ENTRYPOINT ["java", "-jar", "./target/task-manager.war"]
