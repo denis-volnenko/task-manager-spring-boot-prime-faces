@@ -4,69 +4,69 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:menu = "http://java.sun.com/jsf/composite/menu"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:menu="http://java.sun.com/jsf/composite/menu"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
 </h:head>
-<h:body>
 
-    <menu:MainMenu />
+<f:view transient="true">
+    <h:body>
+        <menu:MainMenu/>
+        <h:form id="mainForm" prependId="true">
 
-    <h:form id="mainForm" prependId="true">
+            <p:dataTable var="item" value="#{projectListController.findAll()}"
+                         style="width: 100%; margin-bottom: 10px;" id="mainTable">
+                <f:facet name="header">
+                    <p:outputPanel style="margin: 5px;">
+                        <p:outputLabel value="PROJECT LIST"/>
+                    </p:outputPanel>
+                </f:facet>
+                <p:column headerText="ID" width="170">
+                    <p:outputLabel value="#{item.id}" style="font-size: 0.8em;"/>
+                </p:column>
+                <p:column headerText="NAME" width="200" style="text-align: left;">
+                    <p:outputLabel value="#{item.name}"/>
+                </p:column>
+                <p:column headerText="DESCRIPTION" width="100%" style="text-align: left;">
+                    <p:outputLabel value="#{item.description}"/>
+                </p:column>
+                <p:column headerText="START" width="100" style="text-align: center;">
+                    <p:outputLabel value="#{item.dateStart}">
+                        <f:convertDateTime pattern="dd.MM.yyyy"/>
+                    </p:outputLabel>
+                </p:column>
+                <p:column headerText="FINISH" width="100" style="text-align: center;">
+                    <p:outputLabel value="#{item.dateFinish}">
+                        <f:convertDateTime pattern="dd.MM.yyyy"/>
+                    </p:outputLabel>
+                </p:column>
+                <p:column headerText="STATUS" width="100" style="text-align: center;">
+                    <p:outputLabel value="#{item.status.displayName}" style="font-size: 0.8em;"/>
+                </p:column>
+                <p:column width="40" style="text-align: center;">
+                    <p:link outcome="project-edit">
+                        <i class="fa fa-fw fa-edit" style="font-size: 1.5em;"/>
+                        <f:param name="id" value="#{item.id}"/>
+                    </p:link>
+                </p:column>
+                <p:column width="40" style="text-align: center;">
+                    <p:commandLink update="mainTable" actionListener="#{projectListController.deleteById(item.id)}">
+                        <i class="fa fa-fw fa-trash" style="font-size: 1.5em;"/>
+                    </p:commandLink>
+                </p:column>
+            </p:dataTable>
 
-        <p:dataTable var="item" value="#{projectListController.findAll()}"
-                     style="width: 100%; margin-bottom: 10px;" id="mainTable">
-            <f:facet name="header">
-                <p:outputPanel style="margin: 5px;">
-                    <p:outputLabel value="PROJECT LIST" />
-                </p:outputPanel>
-            </f:facet>
-            <p:column headerText="ID" width="170">
-                <p:outputLabel value="#{item.id}" style="font-size: 0.8em;" />
-            </p:column>
-            <p:column headerText="NAME" width="200" style="text-align: left;">
-                <p:outputLabel value="#{item.name}" />
-            </p:column>
-            <p:column headerText="DESCRIPTION" width="100%" style="text-align: left;">
-                <p:outputLabel value="#{item.description}" />
-            </p:column>
-            <p:column headerText="START" width="100" style="text-align: center;">
-                <p:outputLabel value="#{item.dateStart}" >
-                    <f:convertDateTime pattern="dd.MM.yyyy" />
-                </p:outputLabel>
-            </p:column>
-            <p:column headerText="FINISH" width="100" style="text-align: center;">
-                <p:outputLabel value="#{item.dateFinish}">
-                    <f:convertDateTime pattern="dd.MM.yyyy" />
-                </p:outputLabel>
-            </p:column>
-            <p:column headerText="STATUS" width="100" style="text-align: center;">
-                <p:outputLabel value="#{item.status.displayName}" style="font-size: 0.8em;" />
-            </p:column>
-            <p:column width="40" style="text-align: center;">
-                <p:link outcome="project-edit">
-                    <i class="fa fa-fw fa-edit" style="font-size: 1.5em;" />
-                    <f:param name="id" value="#{item.id}" />
-                </p:link>
-            </p:column>
-            <p:column width="40" style="text-align: center;">
-                <p:commandLink update="mainTable" actionListener="#{projectListController.deleteById(item.id)}">
-                    <i class="fa fa-fw fa-trash" style="font-size: 1.5em;" />
-                </p:commandLink>
-            </p:column>
-        </p:dataTable>
+            <p:outputPanel>
+                <p:commandButton value="CREATE" update="mainTable"
+                                 actionListener="#{projectListController.create()}"/>
+                <p:spacer width="10"/>
+                <p:commandButton value="REFRESH" update="mainTable"/>
+            </p:outputPanel>
 
-        <p:outputPanel>
-            <p:commandButton value="CREATE" update="mainTable"
-                             actionListener="#{projectListController.create()}" />
-            <p:spacer width="10" />
-            <p:commandButton value="REFRESH" update="mainTable" />
-        </p:outputPanel>
+            <menu:About/>
 
-        <menu:About />
+        </h:form>
 
-    </h:form>
-
-</h:body>
+    </h:body>
+</f:view>
 </html>

@@ -28,6 +28,7 @@ public class Application  {
 	@Bean
 	public ServletRegistrationBean jsfServletRegistration(ServletContext servletContext) {
 		// spring boot only works if this is set
+		servletContext.setInitParameter("javax.faces.STATE_SAVING_METHOD", "client");
 		servletContext.setInitParameter("primefaces.FONT_AWESOME", "true");
 		servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
 		final ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean();

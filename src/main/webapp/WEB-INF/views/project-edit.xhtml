@@ -4,96 +4,97 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:menu = "http://java.sun.com/jsf/composite/menu"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:menu="http://java.sun.com/jsf/composite/menu"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:metadata>
-    <f:viewParam name="id" value="#{projectEditController.id}" />
-    <f:viewAction action="#{projectEditController.init()}" />
+    <f:viewParam name="id" value="#{projectEditController.id}"/>
+    <f:viewAction action="#{projectEditController.init()}"/>
 </f:metadata>
 <h:head>
 </h:head>
-<h:body>
 
-    <menu:MainMenu />
+<f:view transient="true">
+    <h:body>
 
-    <h:form id="mainForm">
+        <menu:MainMenu/>
 
-        <p:fieldset legend="PROJECT EDIT">
+        <h:form id="mainForm">
 
-            <p:outputPanel>
-                <p:outputPanel style="margin-bottom: 5px;">
-                    <p:outputLabel value="NAME" />
+            <p:fieldset legend="PROJECT EDIT">
+
+                <p:outputPanel>
+                    <p:outputPanel style="margin-bottom: 5px;">
+                        <p:outputLabel value="NAME"/>
+                    </p:outputPanel>
+                    <p:outputPanel styleClass="ui-fluid">
+                        <p:inputText value="#{projectEditController.project.name}"
+                                     styleClass="ui-fluid"/>
+                    </p:outputPanel>
                 </p:outputPanel>
-                <p:outputPanel styleClass="ui-fluid">
-                    <p:inputText value="#{projectEditController.project.name}"
-                                 styleClass="ui-fluid" />
+
+                <p:spacer height="10"/>
+
+                <p:outputPanel>
+                    <p:outputPanel style="margin-bottom: 5px;">
+                        <p:outputLabel value="DESCRIPTION"/>
+                    </p:outputPanel>
+                    <p:outputPanel styleClass="ui-fluid">
+                        <p:inputTextarea value="#{projectEditController.project.description}"
+                                         styleClass="ui-fluid" style="height: 100px;"/>
+                    </p:outputPanel>
                 </p:outputPanel>
-            </p:outputPanel>
 
-            <p:spacer height="10" />
+                <p:spacer height="5"/>
 
-            <p:outputPanel>
-                <p:outputPanel style="margin-bottom: 5px;">
-                    <p:outputLabel value="DESCRIPTION" />
+                <p:outputPanel>
+                    <p:outputPanel style="margin-bottom: 5px;">
+                        <p:outputLabel value="DATE START"/>
+                    </p:outputPanel>
+                    <p:outputPanel styleClass="ui-fluid">
+                        <p:datePicker value="#{projectEditController.project.dateStart}"
+                                      pattern="dd.MM.yyyy"
+                                      styleClass="ui-fluid"/>
+                    </p:outputPanel>
                 </p:outputPanel>
-                <p:outputPanel styleClass="ui-fluid">
-                    <p:inputTextarea value="#{projectEditController.project.description}"
-                                     styleClass="ui-fluid" style="height: 100px;" />
+
+                <p:spacer height="5"/>
+
+                <p:outputPanel>
+                    <p:outputPanel style="margin-bottom: 5px;">
+                        <p:outputLabel value="DATE FINISH"/>
+                    </p:outputPanel>
+                    <p:outputPanel styleClass="ui-fluid">
+                        <p:datePicker value="#{projectEditController.project.dateFinish}"
+                                      pattern="dd.MM.yyyy"
+                                      styleClass="ui-fluid"/>
+                    </p:outputPanel>
                 </p:outputPanel>
-            </p:outputPanel>
 
-            <p:spacer height="5" />
+                <p:spacer height="5"/>
 
-            <p:outputPanel>
-                <p:outputPanel style="margin-bottom: 5px;">
-                    <p:outputLabel value="DATE START" />
+                <p:outputPanel>
+                    <p:outputPanel style="margin-bottom: 5px;">
+                        <p:outputLabel value="STATUS"/>
+                    </p:outputPanel>
+                    <p:outputPanel styleClass="ui-fluid">
+                        <p:selectOneMenu value="#{projectEditController.project.status}">
+                            <f:selectItems var="status" itemLabel="#{status.displayName}" itemValue="#{status}"
+                                           value="#{projectEditController.statuses}"/>
+                        </p:selectOneMenu>
+                    </p:outputPanel>
                 </p:outputPanel>
-                <p:outputPanel styleClass="ui-fluid">
-                    <p:datePicker value="#{projectEditController.project.dateStart}"
-                                  pattern="dd.MM.yyyy"
-                                  styleClass="ui-fluid" />
+
+                <p:spacer height="5"/>
+
+                <p:outputPanel>
+                    <p:commandButton value="SAVE" action="#{projectEditController.save()}"/>
+                    <p:spacer width="10"/>
+                    <p:button value="CANCEL" outcome="project-list"/>
                 </p:outputPanel>
-            </p:outputPanel>
 
-            <p:spacer height="5" />
+            </p:fieldset>
 
-            <p:outputPanel>
-                <p:outputPanel style="margin-bottom: 5px;">
-                    <p:outputLabel value="DATE FINISH" />
-                </p:outputPanel>
-                <p:outputPanel styleClass="ui-fluid">
-                    <p:datePicker value="#{projectEditController.project.dateFinish}"
-                                  pattern="dd.MM.yyyy"
-                                  styleClass="ui-fluid" />
-                </p:outputPanel>
-            </p:outputPanel>
-
-            <p:spacer height="5" />
-
-            <p:outputPanel>
-                <p:outputPanel style="margin-bottom: 5px;">
-                    <p:outputLabel value="STATUS" />
-                </p:outputPanel>
-                <p:outputPanel styleClass="ui-fluid">
-                    <p:selectOneMenu value="#{projectEditController.project.status}">
-                        <f:selectItems var="status" itemLabel="#{status.displayName}" itemValue="#{status}"
-                                       value="#{projectEditController.statuses}"  />
-                    </p:selectOneMenu>
-                </p:outputPanel>
-            </p:outputPanel>
-
-            <p:spacer height="5" />
-
-            <p:outputPanel>
-                <p:commandButton value="SAVE" action="#{projectEditController.save()}" />
-                <p:spacer width="10" />
-                <p:button value="CANCEL" outcome="project-list" />
-            </p:outputPanel>
-
-        </p:fieldset>
-
-    </h:form>
-
-</h:body>
+        </h:form>
+    </h:body>
+</f:view>
 </html>
